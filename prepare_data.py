@@ -22,8 +22,8 @@ def get_args():
         default="./data/train.csv",
         help="Save path for processed csv(train data)",
     )
-    parser.add_argument("--save_json", action="store_true")
-    parser.add_argument("--load_json", action="store_true")
+    parser.add_argument("--save_json", action="store_true", help="Save map")
+    parser.add_argument("--load_json", action="store_true", help="Use saved map")
     args = parser.parse_args()
     return args
 
@@ -39,10 +39,10 @@ def get_map(category, df):
 
 def to_datetime(x):
     try:
-        time_format = "%Y-%m-%d %H:%M"
+        time_format = "%Y-%m-%d %H:%M"  # For no-label file
         time = datetime.strptime(x, time_format)
     except:
-        time_format = "%m/%d/%Y %H:%M"
+        time_format = "%m/%d/%Y %H:%M"  # For train csv file
         time = datetime.strptime(x, time_format)
     return time
 

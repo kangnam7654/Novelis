@@ -39,8 +39,12 @@ def main(args):
         non_fraud, test_size=0.2
     )  # Use 20% for Validation
 
-    train = pd.concat([train1, train2]).reset_index(drop=True)
-    valid = pd.concat([valid1, valid2]).reset_index(drop=True)
+    train = pd.concat([train1, train2]).reset_index(
+        drop=True
+    )  # 80% Fraud + 80% Non-Fraud
+    valid = pd.concat([valid1, valid2]).reset_index(
+        drop=True
+    )  # 20% Fraud + 20% None-Fraud
 
     train_dataset = DataModule(train)
     valid_dataset = DataModule(valid)
